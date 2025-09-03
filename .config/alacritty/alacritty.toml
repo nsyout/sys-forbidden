@@ -1,0 +1,73 @@
+# Alacritty Terminal Configuration - macOS
+# Converted from Ghostty config
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+# Window decorations (true = native titlebar)
+decorations = "full"
+# Window title
+title = " "
+
+[font]
+normal = { family = "IosevkaTerm NFM", style = "Regular" }
+bold = { family = "IosevkaTerm NFM", style = "Bold" }
+italic = { family = "IosevkaTerm NFM", style = "Italic" }
+bold_italic = { family = "IosevkaTerm NFM", style = "Bold Italic" }
+size = 20
+
+[cursor]
+# Hide cursor while typing (equivalent to mouse-hide-while-typing)
+hide_when_typing = true
+
+# Flexoki Dark theme colors
+[colors.primary]
+background = "#16120c"
+foreground = "#cecdc3"
+
+[colors.normal]
+black = "#16120c"
+red = "#af4b57"
+green = "#66800b"
+yellow = "#ad8301"
+blue = "#205ea6"
+magenta = "#a02f6f"
+cyan = "#24837b"
+white = "#cecdc3"
+
+[colors.bright]
+black = "#575653"
+red = "#d14d41"
+green = "#879a39"
+yellow = "#d0a215"
+blue = "#4385be"
+magenta = "#ce5d97"
+cyan = "#3aa99f"
+white = "#f2f0e5"
+
+# Key bindings
+[[keyboard.bindings]]
+key = "Left"
+mods = "Alt"
+action = "None"
+
+[[keyboard.bindings]]
+key = "Right"
+mods = "Alt"
+action = "None"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\n"
+
+[shell]
+# macOS specific: use login shell
+program = "/bin/zsh"
+args = ["--login"]
+
+# macOS specific settings
+[window.option_as_alt]
+# Equivalent to macos-option-as-alt = true
+option_as_alt = "Both"

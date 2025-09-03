@@ -17,7 +17,7 @@ italic = { family = "IosevkaTerm NFM", style = "Italic" }
 bold_italic = { family = "IosevkaTerm NFM", style = "Bold Italic" }
 size = 20
 
-[cursor]
+[mouse]
 # Hide cursor while typing (equivalent to mouse-hide-while-typing)
 hide_when_typing = true
 
@@ -62,12 +62,12 @@ key = "Return"
 mods = "Shift"
 chars = "\n"
 
-[shell]
+[terminal.shell]
 # macOS specific: use login shell
 program = "/bin/zsh"
 args = ["--login"]
 
 # macOS specific settings
-[window.option_as_alt]
-# Equivalent to macos-option-as-alt = true
+[keyboard]
+# Equivalent to macos-option-as-alt = true  
 option_as_alt = "Both"

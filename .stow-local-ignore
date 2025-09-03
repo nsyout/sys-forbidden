@@ -1,0 +1,42 @@
+# Stow ignore patterns
+# Files that shouldn't be symlinked
+
+# Version control
+\.git
+\.gitignore
+\.gitmodules
+
+# Claude
+\.claude
+
+# Documentation
+README.*
+LICENSE.*
+CHANGELOG.*
+TODO.*
+CLAUDE\.md
+\.md$
+
+# macOS
+\.DS_Store
+\.localized
+
+# Editor files
+\~$
+\.swp$
+\.swo$
+\.tmp$
+
+# Build/Install files
+^/?install.*
+^/?bootstrap.*
+^/?scripts
+^/?packages
+^/?Makefile
+^/?Brewfile
+
+# Temporary backup directories
+.*-backup-.*
+
+# This file
+\.stow-local-ignore

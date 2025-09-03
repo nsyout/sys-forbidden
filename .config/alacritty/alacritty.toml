@@ -67,7 +67,4 @@ chars = "\n"
 program = "/bin/zsh"
 args = ["--login"]
 
-# macOS specific settings
-[keyboard]
-# Equivalent to macos-option-as-alt = true  
-option_as_alt = "Both"
+# macOS specific settings handled by key bindings above

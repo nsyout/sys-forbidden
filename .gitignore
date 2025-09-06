@@ -109,4 +109,4 @@ vendor/
 # Claude Code
 .claude/
 claude-*
-CLAUDE.md
+.config/tmux/plugins/

@@ -85,7 +85,7 @@ local function float_term(cmd, cwd)
   
   -- Close terminal keymaps
   vim.api.nvim_buf_set_keymap(buf, 't', '<C-/>', '<cmd>close<cr>', { noremap = true, silent = true })
-  vim.api.nvim_buf_set_keymap(buf, 't', '<esc><esc>', '<cmd>close<cr>', { noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(buf, 't', '<C-c>', '<cmd>close<cr>', { noremap = true, silent = true })
 end
 
 vim.keymap.set("n", "<leader>ft", function() float_term() end, { desc = "Terminal (root dir)" })

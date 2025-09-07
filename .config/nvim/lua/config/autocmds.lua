@@ -30,6 +30,21 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Force wrapping after plugins load (fixes timing issues)
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufRead" }, {
+  pattern = { "*.md", "*.markdown", "*.txt" },
+  callback = function()
+    -- Small delay to ensure filetype is detected
+    vim.defer_fn(function()
+      if vim.bo.filetype == "markdown" or vim.bo.filetype == "text" then
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.breakindent = true
+      end
+    end, 10)
+  end,
+})
+
 -- Disable wrapping for code files and add column guide
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "python", "javascript", "lua", "c", "cpp" },

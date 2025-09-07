@@ -50,3 +50,8 @@ alias dotupdate='cd ~/.dotfiles && ./scripts/update.sh'
 alias dotverify='cd ~/.dotfiles && ./scripts/verify.sh'
 alias dotsync='dotupdate'  # Alternative name
 alias update='dotupdate'   # Shortest version
+
+# noisyoutput.com
+alias nsynote='nsypost note'
+alias nsywrite='nsypost writing'
+alias nsypage='nsypost page'

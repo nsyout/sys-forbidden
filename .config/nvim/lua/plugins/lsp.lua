@@ -13,6 +13,7 @@ return {
         "html", -- HTML
         "cssls", -- CSS
         "jsonls", -- JSON
+        "harper_ls", -- Grammar checker
       },
     },
   },
@@ -133,6 +134,42 @@ return {
                 parameterNames = true,
                 rangeVariableTypes = true,
               },
+            },
+          },
+        },
+        
+        harper_ls = {
+          filetypes = { "markdown", "text", "gitcommit", "rst", "asciidoc", "tex" },
+          settings = {
+            ["harper-ls"] = {
+              userDictPath = "",
+              workspaceDictPath = "",
+              fileDictPath = "",
+              linters = {
+                SpellCheck = true,
+                SpelledNumbers = true,
+                AnA = true,
+                SentenceCapitalization = true,
+                UnclosedQuotes = true,
+                WrongQuotes = false,
+                LongSentences = true,
+                RepeatedWords = true,
+                Spaces = true,
+                Matcher = true,
+                CorrectNumberSuffix = true,
+                BoringWords = true,
+              },
+              codeActions = {
+                ForceStable = false,
+              },
+              markdown = {
+                IgnoreLinkTitle = false,
+              },
+              diagnosticSeverity = "hint",
+              isolateEnglish = false,
+              dialect = "American",
+              maxFileLength = 120000,
+              ignoredLintsPath = {},
             },
           },
         },

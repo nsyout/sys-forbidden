@@ -57,18 +57,41 @@ vim.keymap.set("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 vim.keymap.set("n", "<leader>L", function() end, { desc = "LazyVim" })
 
 -- floating terminal
-local function float_term(cmd, opts)
-  opts = vim.tbl_deep_extend("force", {
-    cmd = cmd,
-    size = { width = 0.9, height = 0.9 },
-  }, opts or {})
-  require("lazy.util").terminal.open(opts.cmd, opts)
+local function float_term(cmd, cwd)
+  local width = math.floor(vim.o.columns * 0.9)
+  local height = math.floor(vim.o.lines * 0.9)
+  local col = math.floor((vim.o.columns - width) / 2)
+  local row = math.floor((vim.o.lines - height) / 2)
+  
+  local buf = vim.api.nvim_create_buf(false, true)
+  local win = vim.api.nvim_open_win(buf, true, {
+    relative = 'editor',
+    width = width,
+    height = height,
+    col = col,
+    row = row,
+    style = 'minimal',
+    border = 'rounded',
+  })
+  
+  local term_cmd = cmd or vim.o.shell
+  
+  if cwd then
+    vim.fn.termopen(term_cmd, { cwd = cwd })
+  else
+    vim.fn.termopen(term_cmd)
+  end
+  vim.cmd('startinsert')
+  
+  -- Close terminal keymaps
+  vim.api.nvim_buf_set_keymap(buf, 't', '<C-/>', '<cmd>close<cr>', { noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(buf, 't', '<esc><esc>', '<cmd>close<cr>', { noremap = true, silent = true })
 end
 
 vim.keymap.set("n", "<leader>ft", function() float_term() end, { desc = "Terminal (root dir)" })
-vim.keymap.set("n", "<leader>fT", function() float_term(nil, { cwd = vim.fn.expand("%:p:h") }) end, { desc = "Terminal (cwd)" })
-vim.keymap.set("n", "<c-/>", function() float_term() end, { desc = "Terminal (root dir)" })
-vim.keymap.set("n", "<c-_>", function() float_term() end, { desc = "which_key_ignore" })
+vim.keymap.set("n", "<leader>fT", function() float_term(nil, vim.fn.expand("%:p:h")) end, { desc = "Terminal (cwd)" })
+vim.keymap.set("n", "<c-/>", function() float_term(nil, vim.fn.expand("%:p:h")) end, { desc = "Terminal (current dir)" })
+vim.keymap.set("n", "<c-_>", function() float_term(nil, vim.fn.expand("%:p:h")) end, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })

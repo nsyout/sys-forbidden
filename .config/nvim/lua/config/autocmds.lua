@@ -1,57 +1,8 @@
--- Custom autocmds loaded after plugins
-
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
--- Resize splits if window got resized
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
-})
-
--- Enable wrapping for text-based files
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "text", "gitcommit", "rst", "asciidoc", "tex" },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.linebreak = true
-    vim.opt_local.breakindent = true
-    vim.opt_local.textwidth = 70
-    -- Navigate by visual lines instead of logical lines
-    vim.keymap.set('n', 'j', 'gj', { buffer = true })
-    vim.keymap.set('n', 'k', 'gk', { buffer = true })
-    vim.keymap.set('n', '<Down>', 'gj', { buffer = true })
-    vim.keymap.set('n', '<Up>', 'gk', { buffer = true })
-  end,
-})
-
--- Force wrapping after plugins load (fixes timing issues)
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufRead" }, {
-  pattern = { "*.md", "*.markdown", "*.txt" },
-  callback = function()
-    -- Small delay to ensure filetype is detected
-    vim.defer_fn(function()
-      if vim.bo.filetype == "markdown" or vim.bo.filetype == "text" then
-        vim.opt_local.wrap = true
-        vim.opt_local.linebreak = true
-        vim.opt_local.breakindent = true
-      end
-    end, 10)
-  end,
-})
-
--- Disable wrapping for code files and add column guide
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "python", "javascript", "lua", "c", "cpp" },
-  callback = function()
-    vim.opt_local.wrap = false
-    vim.opt_local.textwidth = 0
-    vim.opt_local.colorcolumn = "70"
-  end,
-})
-
+-- Autocmds are automatically loaded on the VeryLazy event
+-- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+--
+-- Add any additional autocmds here
+-- with `vim.api.nvim_create_autocmd`
+--
+-- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
+-- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")

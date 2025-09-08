@@ -55,3 +55,6 @@ alias update='dotupdate'   # Shortest version
 alias nsynote='nsypost note'
 alias nsywrite='nsypost writing'
 alias nsypage='nsypost page'
+
+# Sublime Text
+alias st='open -a "Sublime Text" .'

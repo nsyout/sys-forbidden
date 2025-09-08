@@ -6,7 +6,7 @@ font-size = 20
 font-family = "IosevkaTerm NFM"
 mouse-hide-while-typing = true
 window-decoration = true
-split-divider-color = #FFFFFF
+split-divider-color = #808080
 
 # Cross-platform keybinds
 keybind = alt+left=unbind

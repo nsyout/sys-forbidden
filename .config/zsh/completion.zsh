@@ -11,7 +11,7 @@ fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
 # Should be called before compinit
 zmodload zsh/complist
 
-autoload -U compinit; compinit
+autoload -U compinit; compinit -d "$ZDOTDIR/.zcompdump"
 _comp_options+=(globdots) # With hidden files
 
 # setopt GLOB_COMPLETE      # Show autocompletion menu with globs

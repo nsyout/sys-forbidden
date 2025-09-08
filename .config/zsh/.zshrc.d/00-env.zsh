@@ -7,7 +7,7 @@ PATH="${PATH/\/usr\/sbin:/}"
 
 # Now rebuild PATH with correct order
 if [[ -d "/opt/homebrew" ]]; then
-    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH:/usr/bin:/usr/sbin"
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 fi
 
 fpath=($ZDOTDIR/plugins $fpath)
